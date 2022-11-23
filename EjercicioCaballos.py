@@ -22,3 +22,33 @@ def posicion(position: tuple[int, int], n:int) -> list[tuple[int, int]]:
     
     return posiciones
 
+def completado(board: list[list[int]]) -> bool:
+    return not any (elemento ==0 for row in board for elemento in row)
+
+def caballo(board : list[list[int]], posi : tuple[int, int], curr: int)-> bool:
+
+    if completado(board):
+        return True
+
+    for position in posicion(posi, len(board)):
+        y, x = position
+
+        if board[y][x] == 0:
+            board[y][x] = curr +1
+            if caballo (board,position,curr +1):
+                return True
+            board[y][x]= 0
+    return False
+
+def caballo(n :int)-> list[list[int]]:
+    board = [[0 for i in range(n)]for j in range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            board[i][j]= 0
+    raise ValueError(f"No es posible realizar el movimiento")
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
