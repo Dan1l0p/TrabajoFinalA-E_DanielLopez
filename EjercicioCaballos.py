@@ -1,5 +1,4 @@
 from __future__ import annotations
-solucion = []
 
 def posicion(position: tuple[int, int], n:int) -> list[tuple[int, int]]:
     y, x = position
@@ -26,7 +25,7 @@ def posicion(position: tuple[int, int], n:int) -> list[tuple[int, int]]:
 def completado(board: list[list[int]]) -> bool:
     return not any (elemento ==0 for row in board for elemento in row)
 
-def caballo(board : list[list[int]], posi : tuple[int, int], curr: int)-> bool:
+def caballo_ayuda(board : list[list[int]], posi : tuple[int, int], curr: int)-> bool:
 
     if completado(board):
         return True
@@ -36,7 +35,7 @@ def caballo(board : list[list[int]], posi : tuple[int, int], curr: int)-> bool:
 
         if board[y][x] == 0:
             board[y][x] = curr +1
-            if caballo (board,position,curr +1):
+            if caballo_ayuda (board,position,curr +1):
                 return True
             board[y][x]= 0
     return False
@@ -46,11 +45,15 @@ def caballo(n :int)-> list[list[int]]:
 
     for i in range(n):
         for j in range(n):
+            board[i][j]= 1
+            if caballo_ayuda(board,(i,j),1):
+                return board
             board[i][j]= 0
-    raise ValueError(f"No es posible realizar el movimiento")
+            
+    raise ValueError(f"No es posible realizar el movimiento {n}")
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-    solucion(8)
+    caballo(4)
 
