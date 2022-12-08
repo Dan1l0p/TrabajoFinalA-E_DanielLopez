@@ -49,12 +49,8 @@ def caballo(n :int)-> list[list[int]]:
             board[i][j]= 0
     raise ValueError(f"No es posible realizar el movimiento")
 
-n = 8
-board = [[0 for i in range(n)]for j in range(n)]
-completado(board,0)
-print("Las soluciones posibles son: ", len(solucion))
-
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+    solucion(8)
 
