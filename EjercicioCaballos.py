@@ -55,5 +55,5 @@ def caballo(n :int)-> list[list[int]]:
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-    caballo(4)
+    
 
