@@ -39,7 +39,7 @@ def printboard (board: list[list[int]]) -> None:
                 print(".", end = "")
         print()
 
-n = 8
+n = 4
 board = [[0 for i in range(n)]for j in range(n)]
 resuelto(board,0)
 print("Las soluciones posibles son: ", len(solucion))
